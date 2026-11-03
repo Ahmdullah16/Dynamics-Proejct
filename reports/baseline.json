@@ -1,0 +1,9 @@
+{
+  "omega_n_rad_s": 10.0,
+  "frequency_hz": 1.5915494309189535,
+  "damping_ratio": 0.05,
+  "first_peak_s": 0.15226800110860628,
+  "peak_displacement_m": 0.009266920209946194,
+  "settling_s": 7.753209948934162,
+  "estimate_4_over_zeta_wn_s": 8.0
+}
