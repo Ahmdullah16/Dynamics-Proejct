@@ -34,4 +34,5 @@ elif __name__ == "__main__" and getattr(__spec__, "name", None) == "streamlit":
     runpy.run_module("streamlit", run_name="__main__", alter_sys=True)
 elif __name__ == "__main__":
     # Streamlit's script runner executes the selected file as __main__.
-    runpy.run_path(str(Path(__file__).with_name("app.py")), run_name="__main__")
+    from project_bootstrap import run_app
+    run_app(Path(__file__).resolve().parent)

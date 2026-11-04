@@ -33,3 +33,14 @@ class AppSmoke(unittest.TestCase):
         app.number_input(key='zeta_input').set_value(1.).run()
         self.assertEqual(app.metric[1].value,'1')
         self.assertEqual(len(app.exception),0)
+
+    def test_launcher_recovers_a_cached_old_solver(self):
+        import sys
+        import types
+        stale=types.ModuleType('sdof')
+        stale.__file__=str(ROOT/'sdof.py')
+        sys.modules['sdof']=stale
+        app=AppTest.from_file(str(ROOT/'streamlit.py'),default_timeout=90).run()
+        self.assertEqual(len(app.exception),0)
+        self.assertEqual(len(app.metric),4)
+        self.assertTrue(callable(sys.modules['sdof'].time_history))
